@@ -1,0 +1,22 @@
+<h2>Add New Message</h2>
+<br/>
+<form action='/messages' method='post' role="form">
+  <div>
+    <label>Enter a message:</label>
+    <br>
+    <textarea type="text" class="form-control" name="message[body]" 
+      rows="5" cols="30"></textarea>
+  </div>
+  <select name='message[param_type]'>
+    <% OPTIONS.each do |id, text| %>
+      <option value='<%= id %>'><%= text %></option>
+    <% end %>
+  </select>
+  <select name='message[param_amount]'>
+    <% [1, 2, 3, 4, 5].each do |number| %>
+      <option><%= number %></option>
+    <% end %>
+  </select>
+  <br>
+  <button type='submit' class='btn btn-primary'>Create a message</button>
+</form>
