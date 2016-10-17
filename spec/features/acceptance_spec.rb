@@ -32,7 +32,7 @@ describe('visiting a saved message', {:type => :feature}) do
     amount_path = "//select[@name='message[param_amount]']/option[text()='5']"
     find(:xpath, amount_path).select_option
     click_button('Create a message')
-    visit find(:xpath, "//a[contains(text(), 'message')]").text
+    find(:xpath, "//a[contains(text(), 'Click here')]").click
     expect(page).to have_content('What a lovely day')
   end
 end
@@ -49,7 +49,7 @@ describe('number of visits expired', {:type => :feature}) do
     amount_path = "//select[@name='message[param_amount]']/option[text()='2']"
     find(:xpath, amount_path).select_option
     click_button('Create a message')
-    message_link = find(:xpath, "//a[contains(text(), 'message')]").text
+    message_link = find(:xpath, "//a[contains(text(), 'Click here')]")[:href]
     3.times { visit(message_link) }
     expect(page).to have_content('Welcome, you can add a new message')
   end
@@ -68,7 +68,7 @@ describe('time of message existing expired', {:type => :feature}) do
     find(:xpath, amount_path).select_option
     click_button('Create a message')
     Timecop.travel(Time.now + 300.minutes)
-    visit find(:xpath, "//a[contains(text(), 'message')]").text
+    find(:xpath, "//a[contains(text(), 'Click here')]").click
     expect(page).to have_content('Welcome, you can add a new message')
   end
 end
