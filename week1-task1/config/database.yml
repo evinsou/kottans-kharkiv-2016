@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: messenger_devdb
+  pool: 2
+  username: messenger
+  password: 4321mess
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: messenger_testdb
+  pool: 2
+  username: messenger
+  password: 4321mess
